@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerObj;
     [SerializeField] private Vector2 spawnPoint;
 
+    [SerializeField] private GameObject winScreen;
+
     void Start()
     {
         Instance = this;
@@ -19,5 +21,11 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Player died!");
         playerObj.transform.position = spawnPoint;
+    }
+
+    public void WinGame()
+    {
+        Debug.Log("You win!");
+        winScreen.SetActive(true);
     }
 }
