@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.Instance.IsGameRunning())
+        {
+            return;
+        }   
+
         float xMovement = 0;
         if (Input.GetKey(KeyCode.A))
         {

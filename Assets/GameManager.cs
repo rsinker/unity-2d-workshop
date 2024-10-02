@@ -12,9 +12,25 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject winScreen;
 
+    private bool gameRunning = true;
+    
+
     void Start()
     {
         Instance = this;
+    }
+
+    void Update()
+    {
+        if (!gameRunning)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                playerObj.transform.position = spawnPoint;
+                winScreen.SetActive(false);
+                gameRunning = true;
+            }
+        }
     }
 
     public void KillPlayer()
@@ -27,5 +43,12 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("You win!");
         winScreen.SetActive(true);
+        
+        gameRunning = false;
+    }
+
+    public bool IsGameRunning()
+    {
+        return gameRunning;
     }
 }
