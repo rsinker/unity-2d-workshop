@@ -57,12 +57,8 @@ public class PlayerController : MonoBehaviour
     //Make the player jump, called when Space is pressed and game is running
     void Jump()
     {
-        //Reset the player vertical velocity to 0, 
-        //seems counter intuitive but we do this so our jump is the same power no matter if we are moving or not
-        rb.velocity = new Vector2(rb.velocity.x, 0);
-
-        //Add the jumpForce to our velocity in the upward direction
-        rb.velocity += Vector2.up * jumpForce;
+        //Set rb's vertical velocity to the jump force
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
         //Increase our jump counter
         numJumps++;
